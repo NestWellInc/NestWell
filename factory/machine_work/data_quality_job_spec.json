@@ -1,0 +1,33 @@
+{
+  "job_type": "tabular_data_quality_audit",
+  "version": "1.0",
+  "accepted_inputs": ["csv", "xlsx"],
+  "max_rows_default": 25000,
+  "required_checks": [
+    "row_count",
+    "column_count",
+    "duplicate_rows",
+    "missing_values_by_column",
+    "type_consistency",
+    "leading_trailing_whitespace",
+    "date_parse_failures",
+    "numeric_parse_failures",
+    "identifier_leading_zero_risk"
+  ],
+  "outputs": {
+    "summary": "json",
+    "column_audit": "csv",
+    "cleaning_recommendations": "markdown"
+  },
+  "safety": {
+    "do_not_modify_source": true,
+    "avoid_regulated_compliance_claims": true,
+    "mask_sensitive_data_when_possible": true
+  },
+  "success_criteria": [
+    "machine-readable audit produced",
+    "issues grouped by column",
+    "source file remains unchanged",
+    "recommended fixes are explicit and reversible"
+  ]
+}
